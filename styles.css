@@ -1,0 +1,149 @@
+/* CSS-переменные для удобного управления цветами */
+:root {
+    --accent: #4ade80; /* Зелёный акцентный цвет */
+    --bg-dark: #0f172a; /* Тёмный фон */
+    --bg-gradient-start: #064e3b; /* Начало градиента (тёмно-зелёный) */
+    --bg-gradient-end: #0f172a; /* Конец градиента (тёмно-синий) */
+    --text-light: #f1f5f9; /* Светлый текст */
+    --text-muted: #cbd5e1; /* Приглушённый текст */
+}
+
+/* Сброс стилей по умолчанию */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили для body */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    color: var(--text-light);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Hero-секция */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Контейнер для контента */
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* Заголовок H1 */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
+
+/* Биография */
+.hero-bio {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+/* Подзаголовок */
+.hero-subtitle {
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+}
+
+/* Кнопка CTA */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+    background-color: var(--accent);
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease-out 0.8s forwards;
+    cursor: pointer;
+}
+
+/* Эффект при наведении на кнопку */
+.cta-button:hover {
+    background-color: #22c55e;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+/* Анимация появления элементов */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem;
+    }
+    
+    .hero-title {
+        margin-bottom: 1rem;
+    }
+    
+    .hero-bio {
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        margin-bottom: 2rem;
+    }
+    
+    .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+    .hero {
+        padding: 1rem;
+    }
+    
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
