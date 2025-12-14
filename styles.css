@@ -33,13 +33,130 @@ body {
     padding: 2rem;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+/* Контейнер для анимированного фона */
+.animated-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Градиентные орбы (светящиеся круги) */
+.gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.4;
+    animation: float 20s infinite ease-in-out;
+}
+
+.orb-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.6) 0%, rgba(74, 222, 128, 0) 70%);
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0) 70%);
+    top: 60%;
+    right: 15%;
+    animation-delay: -7s;
+}
+
+.orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(5, 150, 105, 0.4) 0%, rgba(5, 150, 105, 0) 70%);
+    bottom: 10%;
+    left: 50%;
+    animation-delay: -14s;
+}
+
+/* Анимация плавания орбов */
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(50px, -50px) scale(1.1);
+    }
+    50% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+    75% {
+        transform: translate(40px, 40px) scale(1.05);
+    }
+}
+
+/* Контейнер для частиц */
+.particles-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* Отдельные частицы */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: particleFloat 15s infinite ease-in-out;
+}
+
+/* Анимация частиц */
+@keyframes particleFloat {
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+/* Интерактивный элемент, следующий за курсором */
+.cursor-follower {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
+    filter: blur(40px);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease-out;
+    z-index: 1;
 }
 
 /* Контейнер для контента */
 .hero-content {
     max-width: 800px;
     text-align: center;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 }
 
 /* Заголовок H1 */
