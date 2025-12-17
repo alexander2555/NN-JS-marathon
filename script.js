@@ -147,16 +147,19 @@ function getDefaultSkills() {
       title: 'JavaScript / TypeScript',
       description:
         'Пишу современный, читаемый код, использую ES6+, работаю с асинхронностью и типизацией.',
+      learned: false,
     },
     {
       title: 'React / Frontend',
       description:
         'Создаю компонентные интерфейсы, работаю с хуками, маршрутизацией и управлением состоянием.',
+      learned: false,
     },
     {
       title: 'Работа с API и AI-сервисами',
       description:
         'Интегрирую REST / GraphQL API, подключаю AI-сервисы и модели для реальных задач.',
+      learned: false,
     },
   ]
 }
@@ -179,12 +182,19 @@ function loadSkillsFromStorage() {
     const parsed = JSON.parse(raw)
     if (!Array.isArray(parsed)) return []
 
-    return parsed.filter(
-      (item) =>
-        item &&
-        typeof item.title === 'string' &&
-        typeof item.description === 'string'
-    )
+    // Фильтруем некорректные записи и нормализуем структуру
+    return parsed
+      .filter(
+        (item) =>
+          item &&
+          typeof item.title === 'string' &&
+          typeof item.description === 'string'
+      )
+      .map((item) => ({
+        title: item.title,
+        description: item.description,
+        learned: Boolean(item.learned),
+      }))
   } catch (e) {
     console.warn('Не удалось загрузить навыки из localStorage', e)
     return []
@@ -210,18 +220,87 @@ function renderSkills(container, skills) {
     indicator.className = 'skill-card-indicator'
     indicator.textContent = '›'
 
-    // Описание навыка
+    // Описание навыка (раскрывается по клику на карточку)
     const descEl = document.createElement('p')
     descEl.className = 'skill-description'
     descEl.textContent = skill.description
 
+    // Блок действий: флаг "изучено" и кнопка удаления
+    const actionsEl = document.createElement('div')
+    actionsEl.className = 'skill-actions'
+
+    // Чекбокс "изучено"
+    const learnedLabel = document.createElement('label')
+    learnedLabel.className = 'skill-learned-label'
+
+    const learnedCheckbox = document.createElement('input')
+    learnedCheckbox.type = 'checkbox'
+    learnedCheckbox.className = 'skill-learned-checkbox'
+    learnedCheckbox.checked = Boolean(skill.learned)
+
+    const learnedText = document.createElement('span')
+    learnedText.textContent = 'Изучено'
+
+    learnedLabel.appendChild(learnedCheckbox)
+    learnedLabel.appendChild(learnedText)
+
+    // Кнопка удаления
+    const deleteBtn = document.createElement('button')
+    deleteBtn.type = 'button'
+    deleteBtn.className = 'skill-delete-btn'
+    deleteBtn.textContent = 'Удалить'
+
+    actionsEl.appendChild(learnedLabel)
+    actionsEl.appendChild(deleteBtn)
+
     card.appendChild(titleEl)
     card.appendChild(indicator)
     card.appendChild(descEl)
+    card.appendChild(actionsEl)
+
+    // Визуальное состояние "изучено"
+    if (skill.learned) {
+      card.classList.add('skill-learned')
+    }
 
     // Клик по карточке — разворачиваем/сворачиваем
     card.addEventListener('click', function () {
       card.classList.toggle('expanded')
+    })
+
+    // Избегаем "всплытия" кликов от контролов к карточке
+    learnedCheckbox.addEventListener('click', function (event) {
+      event.stopPropagation()
+    })
+    deleteBtn.addEventListener('click', function (event) {
+      event.stopPropagation()
+    })
+
+    // Обработка изменения флага "изучено"
+    learnedCheckbox.addEventListener('change', function () {
+      const isChecked = learnedCheckbox.checked
+      skill.learned = isChecked
+
+      if (isChecked) {
+        card.classList.add('skill-learned')
+      } else {
+        card.classList.remove('skill-learned')
+      }
+
+      saveSkillsToStorage(skills)
+    })
+
+    // Удаление навыка
+    deleteBtn.addEventListener('click', function () {
+      const shouldDelete = confirm(
+        `Удалить навык "${skill.title}"? Это действие нельзя отменить.`
+      )
+
+      if (!shouldDelete) return
+
+      skills.splice(index, 1)
+      saveSkillsToStorage(skills)
+      renderSkills(container, skills)
     })
 
     container.appendChild(card)
