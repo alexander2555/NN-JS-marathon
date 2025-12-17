@@ -1,266 +1,443 @@
 /* CSS-переменные для удобного управления цветами */
 :root {
-    --accent: #4ade80; /* Зелёный акцентный цвет */
-    --bg-dark: #0f172a; /* Тёмный фон */
-    --bg-gradient-start: #064e3b; /* Начало градиента (тёмно-зелёный) */
-    --bg-gradient-end: #0f172a; /* Конец градиента (тёмно-синий) */
-    --text-light: #f1f5f9; /* Светлый текст */
-    --text-muted: #cbd5e1; /* Приглушённый текст */
+  --accent: #4ade80; /* Зелёный акцентный цвет */
+  --bg-dark: #0f172a; /* Тёмный фон */
+  --bg-gradient-start: #064e3b; /* Начало градиента (тёмно-зелёный) */
+  --bg-gradient-end: #0f172a; /* Конец градиента (тёмно-синий) */
+  --text-light: #f1f5f9; /* Светлый текст */
+  --text-muted: #cbd5e1; /* Приглушённый текст */
 }
 
 /* Сброс стилей по умолчанию */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Основные стили для body */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    color: var(--text-light);
-    min-height: 100vh;
-    line-height: 1.6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-end) 100%
+  );
+  color: var(--text-light);
+  min-height: 100vh;
+  line-height: 1.6;
 }
 
 /* Hero-секция */
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-end) 100%
+  );
 }
 
 /* Контейнер для анимированного фона */
 .animated-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
 }
 
 /* Градиентные орбы (светящиеся круги) */
 .gradient-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.4;
-    animation: float 20s infinite ease-in-out;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.4;
+  animation: float 20s infinite ease-in-out;
 }
 
 .orb-1 {
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(74, 222, 128, 0.6) 0%, rgba(74, 222, 128, 0) 70%);
-    top: 10%;
-    left: 10%;
-    animation-delay: 0s;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(74, 222, 128, 0.6) 0%,
+    rgba(74, 222, 128, 0) 70%
+  );
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
 }
 
 .orb-2 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0) 70%);
-    top: 60%;
-    right: 15%;
-    animation-delay: -7s;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(16, 185, 129, 0.5) 0%,
+    rgba(16, 185, 129, 0) 70%
+  );
+  top: 60%;
+  right: 15%;
+  animation-delay: -7s;
 }
 
 .orb-3 {
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(5, 150, 105, 0.4) 0%, rgba(5, 150, 105, 0) 70%);
-    bottom: 10%;
-    left: 50%;
-    animation-delay: -14s;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(
+    circle,
+    rgba(5, 150, 105, 0.4) 0%,
+    rgba(5, 150, 105, 0) 70%
+  );
+  bottom: 10%;
+  left: 50%;
+  animation-delay: -14s;
 }
 
 /* Анимация плавания орбов */
 @keyframes float {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-    }
-    25% {
-        transform: translate(50px, -50px) scale(1.1);
-    }
-    50% {
-        transform: translate(-30px, 30px) scale(0.9);
-    }
-    75% {
-        transform: translate(40px, 40px) scale(1.05);
-    }
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-30px, 30px) scale(0.9);
+  }
+  75% {
+    transform: translate(40px, 40px) scale(1.05);
+  }
 }
 
 /* Контейнер для частиц */
 .particles-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 /* Отдельные частицы */
 .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: var(--accent);
-    border-radius: 50%;
-    opacity: 0.6;
-    animation: particleFloat 15s infinite ease-in-out;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: particleFloat 15s infinite ease-in-out;
 }
 
 /* Анимация частиц */
 @keyframes particleFloat {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-100vh) translateX(50px);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(50px);
+    opacity: 0;
+  }
 }
 
 /* Интерактивный элемент, следующий за курсором */
 .cursor-follower {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(74, 222, 128, 0.15) 0%, transparent 70%);
-    filter: blur(40px);
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: transform 0.3s ease-out;
-    z-index: 1;
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(74, 222, 128, 0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease-out;
+  z-index: 1;
 }
 
 /* Контейнер для контента */
 .hero-content {
-    max-width: 800px;
-    text-align: center;
-    z-index: 2;
-    position: relative;
+  max-width: 800px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
 }
 
 /* Заголовок H1 */
 .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text-light);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
 }
 
 /* Биография */
 .hero-bio {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    line-height: 1.8;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
 }
 
 /* Подзаголовок */
 .hero-subtitle {
-    font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
 }
 
 /* Кнопка CTA */
 .cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--bg-dark);
-    background-color: var(--accent);
-    text-decoration: none;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease-out 0.8s forwards;
-    cursor: pointer;
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bg-dark);
+  background-color: var(--accent);
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out 0.8s forwards;
+  cursor: pointer;
 }
 
 /* Эффект при наведении на кнопку */
 .cta-button:hover {
-    background-color: #22c55e;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
+  background-color: #22c55e;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
 }
 
 .cta-button:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* Анимация появления элементов */
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
-    .hero {
-        padding: 1.5rem;
-    }
-    
-    .hero-title {
-        margin-bottom: 1rem;
-    }
-    
-    .hero-bio {
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-subtitle {
-        margin-bottom: 2rem;
-    }
-    
-    .cta-button {
-        padding: 0.875rem 2rem;
-        font-size: 1rem;
-    }
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+
+  .hero-bio {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
 }
 
 /* Адаптивность для очень маленьких экранов */
 @media (max-width: 480px) {
-    .hero {
-        padding: 1rem;
-    }
-    
-    .cta-button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.95rem;
-    }
+  .hero {
+    padding: 1rem;
+  }
+
+  .cta-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
 }
 
+/* =======================
+   СЕКЦИЯ "МОИ НАВЫКИ"
+   ======================= */
+
+.skills {
+  padding: 4rem 2rem 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.skills-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.skills-add-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skills-add-btn:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(74, 222, 128, 0.35);
+}
+
+.skills-add-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Сетка карточек */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Карточка навыка */
+.skill-card {
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.9);
+  border-color: rgba(74, 222, 128, 0.7);
+  background: rgba(15, 23, 42, 0.95);
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top left,
+    rgba(74, 222, 128, 0.16),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-light);
+}
+
+.skill-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
+  opacity: 0;
+  margin-top: 0.25rem;
+}
+
+/* Состояние развёрнутой карточки */
+.skill-card.expanded .skill-description {
+  max-height: 200px; /* достаточно для короткого описания */
+  opacity: 1;
+}
+
+.skill-card-indicator {
+  position: absolute;
+  top: 0.9rem;
+  right: 1rem;
+  font-size: 1rem;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+.skill-card.expanded .skill-card-indicator {
+  transform: rotate(90deg);
+}
+
+/* Адаптивность для секции навыков */
+@media (max-width: 768px) {
+  .skills {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .skills-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skills-add-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 2.5rem 1rem 3rem;
+  }
+}

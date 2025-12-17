@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Веб-разработчик | Личный сайт</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- Hero-секция -->
     <section class="hero">
-        <!-- Анимированный фон -->
-        <div class="animated-bg">
-            <div class="gradient-orb orb-1"></div>
-            <div class="gradient-orb orb-2"></div>
-            <div class="gradient-orb orb-3"></div>
-            <div class="particles-container"></div>
-            <div class="cursor-follower"></div>
-        </div>
-        
-        <div class="hero-content">
-            <h1 class="hero-title">Александр Мамонтов</h1>
-            <p class="hero-bio">
-                Веб-разработчик.
-                Создаю современные веб-приложения с акцентом на пользовательский опыт и производительность.
-                Специализируюсь на разработке интерактивных интерфейсов и интеграции AI-технологий.
-            </p>
-            <h2 class="hero-subtitle">Мой путь в IT + AI</h2>
-            <a href="#skills" class="cta-button">Мои навыки</a>
-        </div>
+      <!-- Анимированный фон -->
+      <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container"></div>
+        <div class="cursor-follower"></div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="hero-title">Александр Мамонтов</h1>
+        <p class="hero-bio">
+          Веб-разработчик. Создаю современные веб-приложения с акцентом на
+          пользовательский опыт и производительность. Специализируюсь на
+          разработке интерактивных интерфейсов и интеграции AI-технологий.
+        </p>
+        <h2 class="hero-subtitle">Мой путь в IT + AI</h2>
+        <a href="#skills" class="cta-button">Мои навыки</a>
+      </div>
+    </section>
+
+    <!-- Секция: Мои навыки -->
+    <section id="skills" class="skills">
+      <div class="skills-header">
+        <h2 class="skills-title">Мои навыки</h2>
+        <button class="skills-add-btn" type="button">Добавить навык</button>
+      </div>
+
+      <!-- Контейнер для карточек навыков -->
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Карточки будут подставляться из JavaScript -->
+      </div>
     </section>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
